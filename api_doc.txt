@@ -1,0 +1,49 @@
+RIX API >> Documentation
+
+API Validation using the RIX API
+
+All requests made using the RIX Api must have the following parameters:
+'token' : Set this to the access token that RIX has provided for you when you access /generatetoken route.
+'service' : Set this to the service provided by RIX you want to interact with. For now there are the following services: slideshare, github, pocket and vimeo.
+
+API Methods
+
+Get content for a connected service:
+
+Request type: HTTP GET
+URL: http://www.rix-app.com/{token}/{service}/get
+Response JSON Format 
+Example:
+{  
+    "type":{"slideshare"},
+    "id":"62345040",
+    "title":"Hci03 designmethodologies-150910103121-lva1-app6892",
+    "details":"tefanGordn",
+    "description":"wefewa",
+    "image":"\/\/cdn.slidesharecdn.com\/ss_thumbnails\/hci03-designmethodologies-150910103121-lva1-app6892-160524135016-thumbnail-3.jpg?cb=1464097829"
+}
+
+
+Remove a used service:
+
+Request type: HTTP GET
+URL: http://www.rix-app.com/api/{token}/{service}/deleteaccount
+Response text Format 
+Example:
+'The {service} account does not exist'
+or
+'Your account has been deleted'
+
+
+Connect with a new account:
+
+Request type: HTTP POST
+URL: http://www.rix-app.com/api/{token}/{service}/connect
+When {service}=slideshare, 'slideshare_username' parameter is required.
+Response text Format 
+Example:
+'You already have an account on this service'
+or
+'No slideshare username provided'
+or
+Redirecting to the login page.
